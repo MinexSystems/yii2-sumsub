@@ -1,0 +1,34 @@
+{
+    "name": "minexsystems/yii2-sumsub",
+    "license": "MIT",
+    "description": "sumsub.com integration module for Yii2",
+    "type": "yii2-extension",
+    "keywords": ["yii2", "yii2-sumsub", "sumsub", "kyc", "AML", "GDPR", "ICO", "Telegram Passport"],
+    "authors": [
+        {
+            "name": "Andru Cherny",
+            "email": "acherny@minexsystems.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0",
+        "yiisoft/yii2": "^2"
+    },
+    "require-dev": {
+        "yiisoft/yii2-codeception": "^2.0.0",
+        "codeception/specify": "^0.4.3",
+        "codeception/verify": "^0.3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Minexsystems\\SumSub\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "master",
+            "dev-develop": "development"
+        }
+    }
+}
