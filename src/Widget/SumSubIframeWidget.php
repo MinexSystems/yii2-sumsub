@@ -14,8 +14,8 @@ use yii\base\Exception;
 use yii\base\Widget;
 
 /**
- * Class KycWidget
- * @package Minexsystems\Widget\Kyc
+ * Class SumSubIframeWidget
+ * @package Minexsystems\SumSub\Widget
  */
 class SumSubIframeWidget extends Widget
 {

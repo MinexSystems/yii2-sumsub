@@ -15,7 +15,7 @@ SumSubTelegramAssets::register($this)
 <script>
     Telegram.Passport.createAuthButton('telegram_passport_auth', {
         bot_id:       <?= $botId; ?>,
-        scope:        [ <?= $scope; ?>],
+        scope:        <?= $scope; ?>,
         public_key:   '-----BEGIN PUBLIC KEY-----\n' +
             'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAz4BVYGm1jd+ow5NWkIJM\n' +
             '3C1kvob5KBFHgqL+PQvATSrUkCDsod9cuL7gWOUez5l6yld7xkspXPcv5SwdJJ8v\n' +
@@ -26,8 +26,8 @@ SumSubTelegramAssets::register($this)
             'lwIDAQAB\n' +
             '-----END PUBLIC KEY-----',
         payload:      "<?= $accessToken; ?>", // <-- put here the token generated on your backend
-        // callback_url: 'https://example.com/callback/' // place callback url here if needed
+        callback_url: '<?= $callbackUrl; ?>' // place callback url here if needed
     }, {
-        text: 'KYC Check via Telegram Passport' // custom text
+        text: '<?= $text; ?>' // custom text
     });
 </script>

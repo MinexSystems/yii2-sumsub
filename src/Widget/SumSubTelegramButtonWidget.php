@@ -12,10 +12,11 @@ namespace Minexsystems\SumSub\Widget;
 use Minexsystems\SumSub\ApiClient;
 use yii\base\Exception;
 use yii\base\Widget;
+use yii\helpers\Json;
 
 /**
- * Class KycWidget
- * @package Minexsystems\Widget\Kyc
+ * Class SumSubTelegramButtonWidget
+ * @package Minexsystems\SumSub\Widget
  */
 class SumSubTelegramButtonWidget extends Widget
 {
@@ -44,10 +45,9 @@ class SumSubTelegramButtonWidget extends Widget
     {
         
         $accessToken = ApiClient::instance()->getAccessToken($this->userId);
-        return $this->render('telegram_button', [
-            'accessToken' => $accessToken,
-            'botId' => '669660896',
-            'scope' => "'id_document', 'id_selfie', 'utility_bill', 'phone_number', 'email'",
-        ]);
+        $telegramConfig = ApiClient::instance()->getTelegramConfig();
+        $telegramConfig['accessToken'] = $accessToken;
+        $telegramConfig['scope'] = Json::encode($telegramConfig['scope']);
+        return $this->render('telegram_button', $telegramConfig);
     }
 }

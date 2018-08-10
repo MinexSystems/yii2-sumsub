@@ -38,6 +38,8 @@ class ApiClient extends BaseObject
     
     public $telegramText = '';
     
+    public $telegramCallbackUrl = '';
+    
     /**
      * @var string|HttpClient
      */
@@ -171,9 +173,9 @@ class ApiClient extends BaseObject
      */
     public function getAccessToken(int $userId, int $ttlInSecs = 600): ?string {
         $result = $this->sendRequest('POST', '/resources/accessTokens?'.\http_build_query([
-            'key' => $this->apiKey,
-            'ttlInSecs' => $ttlInSecs,
-            'userId' => $userId,
+                'key'       => $this->apiKey,
+                'ttlInSecs' => $ttlInSecs,
+                'userId'    => $userId,
         ]) );
         if($result === false) {
             return null;
@@ -184,9 +186,10 @@ class ApiClient extends BaseObject
     public function getTelegramConfig(): array
     {
         return [
-            'botId'   => $this->telegramBotId,
-            'scope'   => $this->telegramScope,
-            'text'    => $this->telegramText,
+            'botId'       => $this->telegramBotId,
+            'scope'       => $this->telegramScope,
+            'text'        => $this->telegramText,
+            'callbackUrl' => $this->telegramCallbackUrl,
         ];
     }
 }
