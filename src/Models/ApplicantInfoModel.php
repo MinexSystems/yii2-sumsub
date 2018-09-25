@@ -7,18 +7,41 @@
 namespace Minexsystems\SumSub\Models;
 
 
+/**
+ * Class ApplicantInfoModel
+ * @package Minexsystems\SumSub\Models
+ */
 class ApplicantInfoModel extends BaseModel
 {
     
     /**
-     * @var string
+     * @var string|null
      */
     public $firstName;
     
+    /**
+     * @var string|null
+     */
+    public $middleName;
+    
+    /**
+     * @var string|null
+     */
     public $lastName;
     
+    /**
+     * @var string|null
+     */
+    public $placeOfBirth;
+    
+    /**
+     * @var string|null
+     */
     public $dob;
     
+    /**
+     * @var string|null
+     */
     public $country;
     
     /**
@@ -26,11 +49,16 @@ class ApplicantInfoModel extends BaseModel
      */
     public $idDocs = [];
     
+    /**
+     * @return array
+     */
     public function rules()
     {
         return [
             'firstNamString' => [['firstName'], 'string'],
+            'middleName' => [['middleName'], 'string'],
             'lastNameString' => [['lastName'], 'string'],
+            'placeOfBirthString' => [['placeOfBirth'], 'string'],
             'dobString'      => [['dob'], 'string'],
             'countryString'  => [['country'], 'string'],
             'idDocsIsArray'   => [['idDocs'], 'checkIsArray'],
@@ -38,6 +66,11 @@ class ApplicantInfoModel extends BaseModel
             'idDocsNestedValidator' => [['idDocs'], 'nestedModelValidator', 'params' => ['model' => ApplicantDocModel::class, 'isArray' => true]],
         ];
     }
+    
+    /**
+     * @param $attribute
+     * @param $params
+     */
     public function checkIsArray($attribute, $params): void
     {
         if (empty($this->$attribute)) {
