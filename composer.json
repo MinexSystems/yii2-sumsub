@@ -24,11 +24,5 @@
         "psr-4": {
             "Minexsystems\\SumSub\\": "src/"
         }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "master",
-            "dev-develop": "development"
-        }
     }
 }
